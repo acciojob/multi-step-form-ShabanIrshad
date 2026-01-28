@@ -1,36 +1,111 @@
-import React from 'react';
+import React from "react";
 
-const Step=({step,form,setForm,nextStep,prevStep,handleSubmit})=>{
-    return (
+const Step = ({
+  step,
+  formData,
+  handleChange,
+  nextStep,
+  prevStep,
+  handleSubmit
+}) => {
+  return (
+    <div>
+      {/* STEP 1 */}
+      {step === 1 && (
         <>
-            {step===1 && <>
-            <form id={`step-${step}`}>
-                <label for='first_name'>First Name</label><br></br>
-                <input type='text' id='first_name' onChange={(e)=>setForm({...form,firstName:e.target.value})} placeholder='First Name'/><br></br>
-                <label for='last_name'>Last Name</label><br></br>
-                <input type='text' id='last_name' onChange={(e)=>setForm({...form,lastName:e.target.value})} placeholder='Last Name'/><br></br>
-            </form></>}
+          <h3>Step 1: User Info</h3>
 
-            {step===2 && <form id={`step-${step}`}>
-                <label for='model'> Car Model</label> <br></br>
-                <input type='text' id='model' onChange={(e)=>setForm({...form,carModel:e.target.value})} placeholder='Car Model'/><br></br>
-                <label for='car_price'>Car Price</label><br></br>
-                <input type='text' id='car_price' onChange={(e)=>setForm({...form,carPrice:e.target.value})} placeholder='Car Price'/><br></br>
-            </form> }
+          <input
+            id="first_name"
+            type="text"
+            placeholder="First Name"
+            value={formData.first_name}
+            onChange={handleChange}
+          />
 
-            {step===3 && <form id={`step-${step}`}>
-                <label for='card_info'> Credit Card Number</label> <br></br>
-                <input type='text' id='card_info' onChange={(e)=>setForm({...form,cardInfo:e.target.value})} placeholder='Card Number'/><br></br>
-                <label for='expiry_date'>Expiration Date</label><br></br>
-                <input type='date' id='expiry_date' onChange={(e)=>setForm({...form,expiryDate:e.target.value})} /><br></br>
-            </form> }
+          <br /><br />
 
-            {step<=3 && <button onClick={nextStep}>Next</button>}
-            {step>1 && < button onClick={prevStep}> Previous</button>}
-            {step==3 && < button onClick={handleSubmit}> Submit</button>}
-
+          <input
+            id="last_name"
+            type="text"
+            placeholder="Last Name"
+            value={formData.last_name}
+            onChange={handleChange}
+          />
         </>
-    );
+      )}
 
-}
+      {/* STEP 2 */}
+      {step === 2 && (
+        <>
+          <h3>Step 2: Car Info</h3>
+
+          <input
+            id="model"
+            type="text"
+            placeholder="Car Model"
+            value={formData.model}
+            onChange={handleChange}
+          />
+
+          <br /><br />
+
+          <input
+            id="car_price"
+            type="number"
+            placeholder="Car Price"
+            value={formData.car_price}
+            onChange={handleChange}
+          />
+        </>
+      )}
+
+      {/* STEP 3 */}
+      {step === 3 && (
+        <>
+          <h3>Step 3: Payment Info</h3>
+
+          <input
+            id="card_info"
+            type="text"
+            placeholder="Card Information"
+            value={formData.card_info}
+            onChange={handleChange}
+          />
+
+          <br /><br />
+
+          <input
+            id="expiry_date"
+            type="date"
+            value={formData.expiry_date}
+            onChange={handleChange}
+          />
+        </>
+      )}
+
+      <br /><br />
+
+      {/* Navigation Buttons */}
+      {step > 1 && (
+        <button onClick={prevStep}>
+          Previous
+        </button>
+      )}
+
+      {step < 3 && (
+        <button onClick={nextStep} style={{ marginLeft: "10px" }}>
+          Next
+        </button>
+      )}
+
+      {step === 3 && (
+        <button onClick={handleSubmit} style={{ marginLeft: "10px" }}>
+          Submit
+        </button>
+      )}
+    </div>
+  );
+};
+
 export default Step;
