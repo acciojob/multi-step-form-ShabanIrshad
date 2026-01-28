@@ -12,7 +12,7 @@ const Step = ({
     <div>
       {/* STEP 1 */}
       {step === 1 && (
-        <div id={`step${step}`}>
+        <div id={`step1`}>
           <h3>Step 1: User Info</h3>
 
           <input
@@ -37,7 +37,7 @@ const Step = ({
 
       {/* STEP 2 */}
       {step === 2 && (
-        <div id={`step${step}`}>
+        <div id={`step2`}>
           <h3>Step 2: Car Info</h3>
 
           <input
@@ -62,7 +62,7 @@ const Step = ({
 
       {/* STEP 3 */}
       {step === 3 && (
-        <div id={`step${step}`}>
+        <div id={`step3`}>
           <h3>Step 3: Payment Info</h3>
 
           <input
